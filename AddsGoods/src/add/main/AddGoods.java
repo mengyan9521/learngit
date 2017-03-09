@@ -14,14 +14,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
-/////¤•iÄo•iê—pclass
+/////å•†å“å†å‡ºå“å°‚ç”¨class
 class AddGoods{
 	private boolean check1;
 	private boolean check2;
 	private boolean check3;
 	private String loginName=null;
 	private String loginPWD=null;
-	private String fileUrl="C:\\Users\\xujio\\Desktop\\Admin\\ƒrƒWƒlƒXID.txt";
+	private String fileUrl="C:\\Users\\peerich_japan\\Desktop\\Admin\\ãƒ“ã‚¸ãƒã‚¹ID.txt";
 	private String loginUrl="https://login.bizmanager.yahoo.co.jp/login?url=http://batch.auctions.yahoo.co.jp%2ff%2fstore_manage%2findex";
 	private String controlUrl="https://onavi.auctions.yahoo.co.jp/onavi/show/storelist?select=closed&haswinner=0&page=1&op=7&od=2&rpp=100";
 	public AddGoods(){
@@ -52,64 +52,67 @@ class AddGoods{
 		WebElement login_bt=driver.findElement(By.name("login_form"));
 		login_bt.submit();
 		
-		//—Dƒf[ƒ^ˆê——‰æ–Ê
+		//è½æœ­ãƒ‡ãƒ¼ã‚¿ä¸€è¦§ç”»é¢
 		driver.navigate().to(controlUrl);
 		try{
-			WebElement we=driver.findElement(By.xpath("//td[contains(.,'I—¹‚µ‚½ƒI[ƒNƒVƒ‡ƒ“‚Í‚ ‚è‚Ü‚¹‚ñB')]"));  
+			WebElement we=driver.findElement(By.xpath("//td[contains(.,'çµ‚äº†ã—ãŸã‚ªãƒ¼ã‚¯ã‚·ãƒ§ãƒ³ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚')]"));  
 			check1=true;
 		}catch(NoSuchElementException e1){
 			check2=false;
 		}
 		if(check1==false){
 			do{
-				//Äo•i‘I‘ğ
-				WebElement chooseAll=driver.findElement(By.linkText("‚·‚×‚Ä‚ğ‘I‘ğ"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", chooseAll);//‚·‚×‚Ä‚ğ‘I‘ğ 
+				//å†å‡ºå“é¸æŠ
+				WebElement chooseAll=driver.findElement(By.linkText("ã™ã¹ã¦ã‚’é¸æŠ"));
+				((JavascriptExecutor)driver).executeScript("arguments[0].click();", chooseAll);//ã™ã¹ã¦ã‚’é¸æŠ 
 				Thread.sleep(1000);
 				WebElement transferGoods=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//center[2]//table//tbody//tr//td//table//tbody//tr[1]//td//table//tbody//tr//td//small//input[1]"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", transferGoods);//Äo•ibutton
+				((JavascriptExecutor)driver).executeScript("arguments[0].click();", transferGoods);//å†å‡ºå“button
 				Thread.sleep(2000);
 				try{
-					WebElement we2=driver.findElement(By.xpath("//td[contains(.,'‘I‘ğ‚³‚ê‚½')]")); 
+					WebElement we2=driver.findElement(By.xpath("//td[contains(.,'é¸æŠã•ã‚ŒãŸ')]")); 
 					check3=true;
 				}catch(NoSuchElementException e1){
 					check3=false;
 				}
 				if(check3==true){
+					Thread.sleep(3000);
+					driver.close();
 					break;
-				}
-				//ˆêŠ‡Äo•i‚ÌŠî–{€–Ú
-				WebElement duration = driver.findElement(By.xpath("//div[@id='modFormReqrd']//fieldset//div//table//tbody//tr[2]//td//div//select")); 
-				Select mySelect= new Select(duration);
-				mySelect.selectByValue("2");//ƒI[ƒNƒVƒ‡ƒ“ŠúŠÔ
-				Select overTime=new Select(driver.findElement(By.name("closing_time")));
-				overTime.selectByValue("23");//I—¹ŠÔ
-				WebElement buttonGoods=driver.findElement(By.xpath("//center//table[3]//tbody//tr//td//input[1]"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonGoods);//Šm”F
-				Thread.sleep(2000);
-				WebElement buttonok=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[3]//tbody//tr[1]//td//small//input[1]"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonok);//Šm”F
-				Thread.sleep(1000);
-				driver.navigate().to(controlUrl);
-				//Ä‚ÑŠm”F
-				try{
-					WebElement we=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[6]//tbody//tr//td//table//tbody//tr//td[2]//table//tbody//tr//td[1]//small//a//b"));  
-					check2=true;
-				}catch(NoSuchElementException e1){
-					check2=false;
-				}
-				Thread.sleep(2000);
+				}else{
+					//ä¸€æ‹¬å†å‡ºå“ã®åŸºæœ¬é …ç›®
+					WebElement duration = driver.findElement(By.xpath("//div[@id='modFormReqrd']//fieldset//div//table//tbody//tr[2]//td//div//select")); 
+					Select mySelect= new Select(duration);
+					mySelect.selectByValue("2");//ã‚ªãƒ¼ã‚¯ã‚·ãƒ§ãƒ³æœŸé–“
+					Select overTime=new Select(driver.findElement(By.name("closing_time")));
+					overTime.selectByValue("23");//çµ‚äº†æ™‚é–“
+					WebElement buttonGoods=driver.findElement(By.xpath("//center//table[3]//tbody//tr//td//input[1]"));
+					((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonGoods);//ç¢ºèª
+					Thread.sleep(2000);
+					WebElement buttonok=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[3]//tbody//tr[1]//td//small//input[1]"));
+					((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonok);//ã¯ã„
+					Thread.sleep(8000);
+					driver.navigate().to(controlUrl);
+					//å†ã³ç¢ºèª
+					try{
+						WebElement we=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[6]//tbody//tr//td//table//tbody//tr//td[2]//table//tbody//tr//td[1]//small//a//b"));  
+						check2=true;
+					}catch(NoSuchElementException e1){
+						check2=false;
+					}
+					Thread.sleep(1000);
+				}	
 			}while(check2==false);
-			///ÅIŠm”F
-			//Äo•i‘I‘ğ
-			WebElement chooseAll=driver.findElement(By.linkText("‚·‚×‚Ä‚ğ‘I‘ğ"));
-			((JavascriptExecutor)driver).executeScript("arguments[0].click();", chooseAll);//‚·‚×‚Ä‚ğ‘I‘ğ 
+			///æœ€çµ‚ç¢ºèª
+			//å†å‡ºå“é¸æŠ
+			WebElement chooseAll=driver.findElement(By.linkText("ã™ã¹ã¦ã‚’é¸æŠ"));
+			((JavascriptExecutor)driver).executeScript("arguments[0].click();", chooseAll);//ã™ã¹ã¦ã‚’é¸æŠ 
 			Thread.sleep(1000);
 			WebElement transferGoods=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//center[2]//table//tbody//tr//td//table//tbody//tr[1]//td//table//tbody//tr//td//small//input[1]"));
-			((JavascriptExecutor)driver).executeScript("arguments[0].click();", transferGoods);//Äo•ibutton
+			((JavascriptExecutor)driver).executeScript("arguments[0].click();", transferGoods);//å†å‡ºå“button
 			Thread.sleep(2000);
 			try{
-				WebElement we2=driver.findElement(By.xpath("//td[contains(.,'‘I‘ğ‚³‚ê‚½')]")); 
+				WebElement we2=driver.findElement(By.xpath("//td[contains(.,'é¸æŠã•ã‚ŒãŸ')]")); 
 				check3=true;
 			}catch(NoSuchElementException e1){
 				check3=false;
@@ -118,30 +121,24 @@ class AddGoods{
 				Thread.sleep(3000);
 				driver.close();
 			}else{
-				//ˆêŠ‡Äo•i‚ÌŠî–{€–Ú
+				//ä¸€æ‹¬å†å‡ºå“ã®åŸºæœ¬é …ç›®
 				WebElement duration = driver.findElement(By.xpath("//div[@id='modFormReqrd']//fieldset//div//table//tbody//tr[2]//td//div//select")); 
 				Select mySelect= new Select(duration);
-				mySelect.selectByValue("2");//ƒI[ƒNƒVƒ‡ƒ“ŠúŠÔ
+				mySelect.selectByValue("2");//ã‚ªãƒ¼ã‚¯ã‚·ãƒ§ãƒ³æœŸé–“
 				Select overTime=new Select(driver.findElement(By.name("closing_time")));
-				overTime.selectByValue("23");//I—¹ŠÔ
+				overTime.selectByValue("23");//çµ‚äº†æ™‚é–“
 				WebElement buttonGoods=driver.findElement(By.xpath("//center//table[3]//tbody//tr//td//input[1]"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonGoods);//Šm”F
+				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonGoods);//ç¢ºèª
 				Thread.sleep(2000);
 				WebElement buttonok=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[3]//tbody//tr[1]//td//small//input[1]"));
-				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonok);//‚Í‚¢
+				((JavascriptExecutor)driver).executeScript("arguments[0].click();", buttonok);//ã¯ã„
 				Thread.sleep(1000);
-			}			
+			}
+			//å†ã³ç¢ºèª			
 			driver.navigate().to(controlUrl);
-			//Ä‚ÑŠm”F
-//			try{
-//				WebElement we=driver.findElement(By.xpath("//center//center[5]//table//tbody//tr//td//table[6]//tbody//tr//td//table//tbody//tr//td[2]//table//tbody//tr//td[1]//small//a//b"));  
-//				check2=true;
-//			}catch(NoSuchElementException e1){
-//				check2=false;
-//			}
+			WebElement we3=driver.findElement(By.xpath("//td[contains(.,'çµ‚äº†ã—ãŸã‚ªãƒ¼ã‚¯ã‚·ãƒ§ãƒ³ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚')]"));
 			Thread.sleep(2000);
-			
-//			driver.close();
+			driver.close();
 		}else{
 			Thread.sleep(2000);
 			driver.close();
